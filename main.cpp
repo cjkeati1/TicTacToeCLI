@@ -12,11 +12,8 @@ bool isInteger(int input);
 
 int main() {
     Board board;
-    int player = 1;
-    int position = 0;
-    int turns = 0;
-    bool gameState;
-    bool repeat;
+    int player = 1, position = 0, elapsedTurns = 0;
+    bool gameState, repeat;
     char playAgain;
 
     do {
@@ -42,17 +39,17 @@ int main() {
                 std::cout << "ERROR: Please enter an integer (1-9)." << std::endl;
                 repeat = false;
             }
-
         } while (!repeat);
-        turns++;
 
-        gameState = board.checkGameState() || turns >= 9;
+        elapsedTurns++;
+        gameState = board.checkGameState() || elapsedTurns >= 9;
 
+        //Game Over
         if (gameState) {
             board.displayBoard();
             if (board.checkGameState())
                 std::cout << "Player " << player << ((player == 1) ? " (X)" : " (O)") << " wins!" << std::endl;
-            else if (turns >= 9)
+            else if (elapsedTurns >= 9)
                 std::cout << "Tie Game!" << std::endl;
             std::cout << "Play again? (y/n)" << std::endl;
 
@@ -66,7 +63,7 @@ int main() {
 
             if (!gameState) {
                 board.resetBoard();
-                turns = 0;
+                elapsedTurns = 0;
             }
 
         }
