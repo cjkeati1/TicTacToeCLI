@@ -5,22 +5,21 @@
 #ifndef LINKEDLIST_BOARD_H
 #define LINKEDLIST_BOARD_H
 
-
 class Board {
 private:
-    static const int ROWS = 3;
-    static const int COLUMNS = 3;
-    std::string board[ROWS][COLUMNS];
-
+    static const int BOXES = 9;
+    std::string board[BOXES];
 
 public:
     Board();
 
     virtual ~Board();
 
+    bool getPlayerInput(int position, int player);
+
+    bool checkGameState();
+
     void displayBoard();
-
 };
-
 
 #endif //LINKEDLIST_BOARD_H
