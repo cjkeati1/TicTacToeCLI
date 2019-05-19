@@ -68,6 +68,7 @@ int main() {
 
         }
 
+        // Switch players
         if (player == 1) player++;
         else if (player == 2) player--;
 
