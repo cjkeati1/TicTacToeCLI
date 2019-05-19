@@ -2,8 +2,8 @@
 // Created by User on 5/19/2019.
 //
 
-#ifndef LINKEDLIST_BOARD_H
-#define LINKEDLIST_BOARD_H
+#ifndef TicTacToeCLI_BOARD_H
+#define TicTacToeCLI_BOARD_H
 
 class Board {
 private:
@@ -24,4 +24,4 @@ public:
     void resetBoard();
 };
 
-#endif //LINKEDLIST_BOARD_H
+#endif //TicTacToeCLI_BOARD_H
