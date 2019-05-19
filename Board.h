@@ -20,6 +20,8 @@ public:
     bool checkGameState();
 
     void displayBoard();
+
+    void resetBoard();
 };
 
 #endif //LINKEDLIST_BOARD_H

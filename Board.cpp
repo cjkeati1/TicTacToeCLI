@@ -2,6 +2,8 @@
 // Created by User on 5/19/2019.
 //
 
+#include <cmath>
+#include <string>
 #include "Board.h"
 
 Board::Board() : board{"1", "2", "3", "4", "5", "6", "7", "8", "9"} {}
@@ -37,4 +39,11 @@ bool Board::checkGameState() {
            (board[0] == board[4] && board[4] == board[8]) ||
            (board[2] == board[4] && board[4] == board[6]);
 }
+
+void Board::resetBoard() {
+    for (int i = 0; i < BOXES; ++i) {
+        board[i] = std::to_string(i + 1);
+    }
+}
+
 
