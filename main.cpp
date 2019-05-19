@@ -13,11 +13,12 @@ bool isInteger(int input);
 int main() {
     Board board;
     int player = 1, position = 0, elapsedTurns = 0;
-    bool gameState, repeat;
-    char playAgain;
+    bool gameOver, repeat;
+    char playAgain = 0;
 
     do {
         board.displayBoard();
+        elapsedTurns++;
 
         std::cout << "Player " << player << "'s" << ((player == 1) ? " (X)" : " (O)") << " turn. Choose a position"
                   << std::endl;
@@ -41,31 +42,28 @@ int main() {
             }
         } while (!repeat);
 
-        elapsedTurns++;
-        gameState = board.checkGameState() || elapsedTurns >= 9;
+        // Game over if someone has won or if no one won and the board is full (tie)
+        gameOver = board.didSomeoneWin() || elapsedTurns >= 9;
 
-        //Game Over
-        if (gameState) {
+        // Game Over
+        if (gameOver) {
             board.displayBoard();
-            if (board.checkGameState())
+            if (board.didSomeoneWin())
                 std::cout << "Player " << player << ((player == 1) ? " (X)" : " (O)") << " wins!" << std::endl;
             else if (elapsedTurns >= 9)
                 std::cout << "Tie Game!" << std::endl;
-            std::cout << "Play again? (y/n)" << std::endl;
 
+            std::cout << "Play again? (y/n)" << std::endl;
             while (!(std::cin >> playAgain) || (playAgain != 'y' && playAgain != 'n')) {
                 std::cout << "ERROR: Please enter 'y' or 'n'." << std::endl;
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
 
-            gameState = (playAgain == 'n');
-
-            if (!gameState) {
+            if (playAgain != 'n') {
                 board.resetBoard();
                 elapsedTurns = 0;
             }
-
         }
 
         // Switch players
@@ -73,7 +71,7 @@ int main() {
         else if (player == 2) player--;
 
 
-    } while (!gameState);
+    } while (playAgain != 'n');
 }
 
 bool isInteger(int input) {
