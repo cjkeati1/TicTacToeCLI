@@ -67,6 +67,10 @@ const playGame = () => {
       ans = ans.split(",");
       ans[0] = Number(ans[0]);
       ans[1] = Number(ans[1]);
+      if (!board[ans[1]] || !board[ans[1]][ans[0]]) {
+        console.log("Invalid Move");
+        playGame();
+      }
       if (board[ans[1]][ans[0]] !== " ") {
         console.log("Invalid Move");
         playGame();
