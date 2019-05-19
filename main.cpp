@@ -3,8 +3,15 @@
 //
 
 #include <iostream>
+#include <string.h>
 
+#include "Board.cpp"
 
 int main() {
-    std::cout << "Tic Tac Toe" << std::endl;
+
+    Board board;
+
+    board.displayBoard();
+
+
 }
