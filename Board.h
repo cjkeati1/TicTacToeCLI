@@ -17,7 +17,7 @@ public:
 
     bool getPlayerInput(int position, int player);
 
-    bool checkGameState();
+    bool didSomeoneWin();
 
     void displayBoard();
 
