@@ -5,8 +5,9 @@
 #include <iostream>
 #include <string.h>
 #include <limits>
+#include <cmath>
 
-#include "Board.cpp"
+#include "Board.h"
 
 bool isInteger(int input);
 
@@ -75,5 +76,5 @@ int main() {
 }
 
 bool isInteger(int input) {
-    return std::floor(std::abs(input)) == std::abs(input);
+    return floor(std::abs(input)) == std::abs(input);
 }

@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <string>
+#include <iostream>
 
 #include "Board.h"
 
