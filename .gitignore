@@ -2,3 +2,8 @@
 
 *cmake-build-debug/
 
+/nn/nn
+
+/client/node_modules
+
+.vscode 
