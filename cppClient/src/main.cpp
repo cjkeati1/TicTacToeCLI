@@ -10,14 +10,14 @@ int main() {
     int player = 1;
 
     do {
-        board.DisplayBoard();
+        board.displayBoard();
         player == 1 ? playerOne.choosePosition(board) : playerTwo.choosePosition(board); // Choose a position
         player = player == 1 ? 2 : 1; // Switch players
-    } while (!board.ThereIsAWinner() && !board.IsATie());
+    } while (!board.thereIsAWinner() && !board.isATie());
 
-    board.DisplayBoard(); // Display final board
+    board.displayBoard(); // Display final board
 
-    if (board.IsATie())
+    if (board.isATie())
         std::cout << "\n-------GAME OVER-------\nIt's a tie!\n";
     else {
         std::cout << "\n-------GAME OVER-------\n";

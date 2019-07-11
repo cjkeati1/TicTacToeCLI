@@ -16,8 +16,8 @@ bool Player::choosePosition(Board &gameBoard) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         if (pos > 0 && pos < 10) {
-            if (!gameBoard.PositionIsTaken(pos - 1, gameBoard)) {
-                gameBoard.SetDownPiece(XOrO, pos);
+            if (!gameBoard.positionIsTaken(pos - 1, gameBoard)) {
+                gameBoard.setDownPiece(XOrO, pos);
                 choseValidPosition = true;
             } else {
                 std::cout << "That position is already occupied. Choose again." << std::endl;

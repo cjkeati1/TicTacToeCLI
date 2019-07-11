@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.14)
-project(TTT)
+project(TicTacToeCLI)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TTT main.cpp Board.cpp Player.cpp)
+set(SOURCE_FILES src/main.cpp src/Board.cpp src/Player.cpp)
+add_executable(TicTacToeCLI ${SOURCE_FILES})
+
+include_directories(src)
+add_subdirectory(src)
+add_subdirectory(UnitTests)
