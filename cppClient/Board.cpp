@@ -1,38 +1,34 @@
-//
-// Created by User on 5/19/2019.
-//
-
-#include <cmath>
-#include <string>
 #include <iostream>
 
 #include "Board.h"
 
-Board::Board() : board{"1", "2", "3", "4", "5", "6", "7", "8", "9"} {}
-
-Board::~Board() = default;
-
-void Board::displayBoard() {
-    for (int i = 0; i < BOXES; ++i) {
-        if (i % 3 == 0 && i != 0) std::cout << "\n\n";
-        std::cout << board[i] << "   ";
+Board::Board() {
+    for (int i = 0; i < 9; ++i) { // Create board. Number positions 1 - 9
+        board[i] = '0' + (i + 1);
     }
-    std::cout << "\n\n";
 }
 
-bool Board::getPlayerInput(int position, int player) {
-    if (board[position - 1] != "X" && board[position - 1] != "O") {
-        if (player == 1) board[position - 1] = "X";
-        else if (player == 2) board[position - 1] = "O";
-
-        return true;
+void Board::DisplayBoard() {
+    for (int i = 0; i < 9; ++i) {
+        std::cout << board[i] << ((i + 1) % 3 != 0 ? "   " : "\n\n"); // Print new line every 3 positions
     }
-
-    std::cout << "ERROR: Position '" << position << "' is already occupied. Choose another." << std::endl;
-    return false;
 }
 
-bool Board::didSomeoneWin() {
+bool Board::PositionIsTaken(int position, const Board &gameBoard) const {
+    return !isdigit(GetPosition(position)); // If the position value is not a number,
+                                            // then it is an X or O - Thus, it is not open
+}
+
+char Board::GetPosition(int pos) const {
+    return board[pos];
+}
+
+bool Board::SetDownPiece(char c, int pos) {
+    board[pos - 1] = c;
+    return true;
+}
+
+bool Board::ThereIsAWinner() {
     return (board[0] == board[1] && board[1] == board[2]) ||
            (board[3] == board[4] && board[4] == board[5]) ||
            (board[6] == board[7] && board[7] == board[8]) ||
@@ -43,10 +39,22 @@ bool Board::didSomeoneWin() {
            (board[2] == board[4] && board[4] == board[6]);
 }
 
-void Board::resetBoard() {
-    for (int i = 0; i < BOXES; ++i) {
-        board[i] = std::to_string(i + 1);
-    }
+bool Board::IsATie() {
+    return IsBoardFull() && !ThereIsAWinner();
 }
+
+bool Board::IsBoardFull() {
+    for (char i : board) {
+        if (isdigit(i))
+            return false; // If it finds a spot with a digit (1-9)
+    }
+    return true;
+}
+
+
+
+
+
+
 
 

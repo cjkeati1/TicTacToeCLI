@@ -1,27 +1,28 @@
-//
-// Created by User on 5/19/2019.
-//
+#ifndef TTT_BOARD_H
+#define TTT_BOARD_H
 
-#ifndef TicTacToeCLI_BOARD_H
-#define TicTacToeCLI_BOARD_H
+#include <vector>
 
 class Board {
 private:
-    static const int BOXES = 9;
-    std::string board[BOXES];
-
+    char board[9]{};
 public:
-    Board();
+    explicit Board();
 
-    virtual ~Board();
+    void DisplayBoard();
 
-    bool getPlayerInput(int position, int player);
+    bool PositionIsTaken(int position, const Board &gameBoard) const;
 
-    bool didSomeoneWin();
+    char GetPosition(int pos) const;
 
-    void displayBoard();
+    bool SetDownPiece(char c, int pos);
 
-    void resetBoard();
+    bool ThereIsAWinner();
+
+    bool IsATie();
+
+    bool IsBoardFull();
 };
 
-#endif //TicTacToeCLI_BOARD_H
+
+#endif //TTT_BOARD_H

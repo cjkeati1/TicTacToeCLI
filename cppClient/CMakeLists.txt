@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
-project(TicTacToeCLI)
+project(TTT)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TicTacToeCLI main.cpp Board.cpp)
+add_executable(TTT main.cpp Board.cpp Player.cpp)
