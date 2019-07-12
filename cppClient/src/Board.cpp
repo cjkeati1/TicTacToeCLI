@@ -15,8 +15,9 @@ void Board::displayBoard() {
 }
 
 bool Board::positionIsTaken(int position, const Board &gameBoard) const {
-    return !isdigit(getPosition(position)); // If the position value is not a number,
-                                            // then it is an X or O - Thus, it is not open
+    return !isdigit(getPosition(position));
+    // If the position value is not a number, then it is an X or O - Thus, it is not open
+
 }
 
 char Board::getPosition(int pos) const {
