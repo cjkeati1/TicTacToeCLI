@@ -16,7 +16,8 @@ bool Player::choosePosition(Board &gameBoard) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         if (pos > 0 && pos < 10) {
-            if (!gameBoard.positionIsTaken(pos - 1, gameBoard)) {
+            pos -= 1; // Array starts at 0 index
+            if (!gameBoard.positionIsTaken(pos, gameBoard)) {
                 gameBoard.setDownPiece(XOrO, pos);
                 choseValidPosition = true;
             } else {

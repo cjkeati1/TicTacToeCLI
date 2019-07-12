@@ -24,7 +24,7 @@ char Board::getPosition(int pos) const {
 }
 
 bool Board::setDownPiece(char c, int pos) {
-    board[pos - 1] = c;
+    board[pos] = c;
     return true;
 }
 
